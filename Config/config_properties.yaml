@@ -1,0 +1,11 @@
+Demo:
+     url: "http://volvo.demo.decisiv.net/"
+     
+     FF_Browser: firefox
+     IE_Browser: ie
+
+     username1: "zenqafleet"
+     password1: "g00dt3st!ng"
+
+     username2: "zenqadealer"
+     password2: "g00dt3st!ng"
