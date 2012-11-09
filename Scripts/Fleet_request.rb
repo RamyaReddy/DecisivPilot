@@ -2,6 +2,7 @@ require "selenium-webdriver"
 require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/LibraryFiles/Reusable_methods')
 require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/PageParts/LoginPage')
 require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/PageParts/FleetSearchPage')
+require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/PageParts/RequestServicePage')
 require "test/unit"
 require 'yaml'
 
@@ -13,9 +14,6 @@ class Fleet_Request_Test < Test::Unit::TestCase
     if $driver
       @driver = $driver
     else
-	#$env = "http://volvo.demo.decisiv.net/"
-         #$uname="zenqafleet"
-         #$pwd= "g00dt3st!ng"
       $test_browser = $config['FFBrowser']
       $env = $config['url']
       $uname=$config['username1']
@@ -46,11 +44,21 @@ class Fleet_Request_Test < Test::Unit::TestCase
   end
 
   def test_Example
+    # Navigate to the volvo demo site
     @driver.get $env
+    
+    #1. Login to the application 
     Login($uname, $pwd, "1.0") 
-    VehicleSearchWithUnit_No("222", "1.1")
-    Search_Service_Location_With_Location("Dallas,TX", "1.2")
-    Create_Service_Request("123","Engine failure", "Please respond immediately", "9876543210", "testdriver", "9876543210", "street1", "Dallas", "Virginia", "1.3")
+    
+    #2. Perform vehicle search with unit# and verify the search results 
+    VehicleSearchWithUnit_No("222", "2")
+    
+    #3. Perform service location search with location field and verify the search results
+    Search_Service_Location_With_Location("Dallas,TX", "3")
+    
+    #4. Create service request for the searched vehicle and service location and submit the request.
+    Create_Service_Request("123","Engine failure", "Please respond immediately", "9876543210", "testdriver", "9876543210", "street1", "Dallas", "Virginia", "4")
+ 
  end
     
 end

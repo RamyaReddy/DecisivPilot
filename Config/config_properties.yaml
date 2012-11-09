@@ -9,3 +9,8 @@ Demo:
 
      username2: "zenqadealer"
      password2: "g00dt3st!ng"
+
+     Longwait: 60
+     Shortwait: 30
+     
+      

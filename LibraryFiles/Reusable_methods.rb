@@ -1,6 +1,9 @@
 require "selenium"
 require "csv"
+require 'yaml'
 require File.expand_path(File.dirname(__FILE__))+'/Constants'
+$config = YAML.load_file('../Config/config_properties.yaml')['Demo']
+$test_browser = $config['FFBrowser']
 
 
 def Folder_Exists(path)
@@ -63,3 +66,22 @@ def End_Summary(logfile)
     $fileHtml.close()
 end    
 
+
+#wait = Selenium::WebDriver::Wait.new(:timeout => 3)
+#wait.until { driver.find_element(:id => "cheese").displayed? }
+
+def Wait_For_Element(locator_type, locator_value)
+   for iSecond in 0..$config['Longwait']
+     sleep 1
+     if(@driver.find_element("#{locator_type}", "#{locator_value}").displayed?)
+	break
+     else 	
+     if (iSecond >= $config['Longwait']) 
+       return false
+       @driver.find_element("#{locator_type}", "#{locator_value}").displayed?
+       break
+     end
+    end 
+  end
+  return true
+end	
