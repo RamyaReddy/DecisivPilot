@@ -2,6 +2,8 @@ require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/PageC
 require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/PageConstants/FleetSearchPage')
 require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/LibraryFiles/Reusable_methods')
 require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/LibraryFiles/Constants')
+require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/PageConstants/HomePage')
+require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/PageConstants/ShowVehiclePage')
 
 def Search_Service_Location_With_Name(name, testcase_no)
     @driver.find_element(:id, ServiceLocationName_EB).clear
@@ -102,10 +104,13 @@ def Search_Service_Location_With_Name(name, testcase_no)
     @driver.find_element(:css, DealerSelectSwitch_Link).click
     @driver.find_element(:xpath, UnitNoColumn_ID).click
     Wait_For_Element(:xpath, CreatedColumn_ID)
-    #sleep 6
+    sleep 6
+    Wait_For_Element(:css, "span.pagfor_fleet_requested_estimates_load.pag_load")
     @driver.find_element(:xpath, CreatedColumn_ID).click
     Wait_For_Element(:css, ReqServiceFirstRowUnitNo_ID)
-    #sleep 6
+    sleep 6
+    Wait_For_Element(:css, "span.pagfor_fleet_requested_estimates_load.pag_load")
+    
     if(((@driver.find_element(:css, ReqServiceFirstRowUnitNo_ID).text=~/[#{vehicle_no}](.*)/)||(@driver.find_element(:xpath, ReqServiceFirstRowSerialNo_ID).text=~/[#{vehicle_no}](.*)/))&&("#{service_location}"== @driver.find_element(:xpath, ReqServiceFirstRowServiceLocation_ID).text)&&("#{user}"== @driver.find_element(:xpath, ReqServiceFirstRowAssignedUser_ID).text ))
        Results("#{testcase_no}-1", "Fleet Service request was created successfully", "PASS", "")
     else

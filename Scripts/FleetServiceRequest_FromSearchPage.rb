@@ -6,7 +6,7 @@ require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/PageP
 require "test/unit"
 require 'yaml'
 
-class Fleet_Request_Test < Test::Unit::TestCase
+class FleetRequest_FromSearchPage < Test::Unit::TestCase
 
   def setup
     @verification_errors = []
@@ -26,8 +26,8 @@ class Fleet_Request_Test < Test::Unit::TestCase
   
     # Create a log file 
       Folder_Exists(File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/Reports'))
-      $logfile = File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/Reports/Fleet_Request.html')
-      $error_screenshots = File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/ErrorScreenshots/Fleet_Request')
+      $logfile = File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/Reports/FleetRequest_FromSearchPage.html')
+      $error_screenshots = File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/ErrorScreenshots/FleetRequest_FromSearchPage')
       Folder_Exists($error_screenshots)
                  
       # Search for the log file and if it exist delete the file 
@@ -43,7 +43,7 @@ class Fleet_Request_Test < Test::Unit::TestCase
     assert_equal [], @verification_errors
   end
 
-  def test_Example
+  def test_FleetRequest_FromSearchPage
     # Navigate to the volvo demo site
     @driver.get $env
     
