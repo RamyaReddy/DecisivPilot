@@ -5,7 +5,7 @@ require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/PageP
 require "test/unit"
 require 'yaml'
 
-class FleetRequest_FromDashboardPage < Test::Unit::TestCase
+class Test01_FleetRequest_FromDashboardPage < Test::Unit::TestCase
 
   def setup
     @verification_errors = []
@@ -50,14 +50,14 @@ class FleetRequest_FromDashboardPage < Test::Unit::TestCase
             Login($uname, $pwd, "1.0") 
       
 	 #2. Click on vehicle# link 
-	 if("No entries found"!=(@driver.find_element(:css, "#pagfor_fleet_requested_estimates > div.pagination_area.clearfix > div.pages_stats").text))
+	 if("No entries found"!=(@driver.find_element(:css, RequestServicesTableSearchResults_ID).text))
            Results("2.0", "Requested services exists in the home page and hence can view the show vehicle page", "PASS", "")
 	   @driver.find_element(:css, ReqServiceFirstRowUnitNo_ID).click
 	 #2.1. Click on request service button. 
-           @driver.find_element(:xpath, "//div[@id='rarea_wrapper']/div[5]/input[6]").click	 
+           @driver.find_element(:xpath, RequestService_Btn).click	 
 	
          #3. Perform service location search with location field and verify the search results
-           Search_Service_Location_With_Location("Dallas,TX", "3")
+           Search_Service_Location_With_Name("volvo", "3")
     
          #4. Create service request for the searched vehicle and service location and submit the request.
            Create_Service_Request("123","Engine failure", "Please respond immediately", "9876543210", "testdriver", "9876543210", "street1", "Dallas", "Virginia", "4")

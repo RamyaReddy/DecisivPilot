@@ -26,11 +26,11 @@ def VehicleSearchWithUnit_No(unit_no, testcase_no)
 	j=j+2
     end
     if (flag == (no_of_vehicles).to_i)
-      Results("#{testcase_no}"+"-1", "Search results for vehciles with unit# were displayed correctly", "PASS", "")
+      Results("#{testcase_no}"+"-1", "Search results for vehicles with unit# were displayed correctly", "PASS", "")
       #click on vehcile request link
       @driver.find_element(:link, VehicleRequest_Link).click
     else
-      Results("#{testcase_no}"+"-1", "Search results for vehciles with unit# were displayed incorrectly", "FAIL", $error_screenshots)	
+      Results("#{testcase_no}"+"-1", "Search results for vehicles with unit# were displayed incorrectly", "FAIL", $error_screenshots)	
     end
   else
    Results("#{testcase_no}", "No entries were found for the search performed for unit#", "PASS", "")    
@@ -60,9 +60,9 @@ def VehicleSearchWithUnit_No(unit_no, testcase_no)
 	j=j+2
     end
     if (flag == (no_of_vehicles).to_i)
-      Results("#{testcase_no}"+"-1", "Search results for vehciles with serial# were displayed correctly", "PASS", "")
+      Results("#{testcase_no}"+"-1", "Search results for vehicles with serial# were displayed correctly", "PASS", "")
     else
-      Results("#{testcase_no}"+"-1", "Search results for vehciles with serial# were displayed incorrectly", "FAIL", $error_screenshots)	
+      Results("#{testcase_no}"+"-1", "Search results for vehicles with serial# were displayed incorrectly", "FAIL", $error_screenshots)	
     end
   else
    Results("#{testcase_no}", "No entries were found for the search performed for serial#", "PASS", "")    

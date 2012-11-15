@@ -89,7 +89,6 @@ def Search_Service_Location_With_Name(name, testcase_no)
     if("#{user}"=~/[-](.*)/)
        string="#{user}"
        user=string.split(" -")[0]
-       puts user
     end
     @driver.find_element(:xpath, ServiceRequestSubmit_Btn).click
     Wait_For_Element(:css, Flash_Notice)
@@ -105,12 +104,9 @@ def Search_Service_Location_With_Name(name, testcase_no)
     @driver.find_element(:xpath, UnitNoColumn_ID).click
     Wait_For_Element(:xpath, CreatedColumn_ID)
     sleep 6
-    Wait_For_Element(:css, "span.pagfor_fleet_requested_estimates_load.pag_load")
     @driver.find_element(:xpath, CreatedColumn_ID).click
     Wait_For_Element(:css, ReqServiceFirstRowUnitNo_ID)
-    sleep 6
-    Wait_For_Element(:css, "span.pagfor_fleet_requested_estimates_load.pag_load")
-    
+    sleep 8
     if(((@driver.find_element(:css, ReqServiceFirstRowUnitNo_ID).text=~/[#{vehicle_no}](.*)/)||(@driver.find_element(:xpath, ReqServiceFirstRowSerialNo_ID).text=~/[#{vehicle_no}](.*)/))&&("#{service_location}"== @driver.find_element(:xpath, ReqServiceFirstRowServiceLocation_ID).text)&&("#{user}"== @driver.find_element(:xpath, ReqServiceFirstRowAssignedUser_ID).text ))
        Results("#{testcase_no}-1", "Fleet Service request was created successfully", "PASS", "")
     else

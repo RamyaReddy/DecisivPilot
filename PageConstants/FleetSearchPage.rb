@@ -3,6 +3,7 @@ SearchMenu_Link = "topmenu_search"
 VehicleSearchType_DD= "search_query_field"
 VehicleSearch_EB="search_query[query]"
 VehicleSearchResults_ID="div.pages_stats"
+VehicleFirstRowSerialNo_ID="td.center > a"
 
 #Request links
 VehicleRequest_Link="[request]"
