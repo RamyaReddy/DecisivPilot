@@ -1,4 +1,4 @@
-#Service Request
+#Service Request frame
 ServiceRequest_Link="Request Service"
 ServiceRequestComplaint_EB="note"
 ServiceRequestNotes_EB="estimate_note[note]"
@@ -11,7 +11,6 @@ ServiceRequestBreakdownState_DD="new_case_breakdown_state"
 ServiceRequestForUser_DD="//select[@id='user_id']/option"
 ServiceRequestSubmit_Btn="//td/div/input"
 ServiceRequestFirstServiceLocationName_ID="//td[2]/a"
-
 
 #Search location
 ServiceLocationName_EB="dealer_query"

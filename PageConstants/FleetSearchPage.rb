@@ -1,4 +1,4 @@
-# Search vehicle
+# Search vehicle page
 SearchMenu_Link = "topmenu_search"
 VehicleSearchType_DD= "search_query_field"
 VehicleSearch_EB="search_query[query]"

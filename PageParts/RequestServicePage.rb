@@ -5,6 +5,10 @@ require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/Libra
 require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/PageConstants/HomePage')
 require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/PageConstants/ShowVehiclePage')
 
+
+#*  Purpose           :  Search for service location with location name and verify the search results
+#*  Return Value    : None   
+#*  Parameters      :  service location name and testcase # in which the function is called
 def Search_Service_Location_With_Name(name, testcase_no)
     @driver.find_element(:id, ServiceLocationName_EB).clear
     @driver.find_element(:id, ServiceLocationName_EB).send_keys "#{name}"
@@ -35,6 +39,10 @@ def Search_Service_Location_With_Name(name, testcase_no)
   end  
  end	  
 
+  
+  #*  Purpose           :  Search for service location with location(city/state) and verify the search results
+  #*  Return Value    : None   
+  #*  Parameters      :  service location(city/state/city,state) and testcase # in which the function is called 
   def Search_Service_Location_With_Location(location, testcase_no)
     @driver.find_element(:id, ServiceLocationLocation_EB).clear
     @driver.find_element(:id, ServiceLocationLocation_EB).send_keys "#{location}"
@@ -67,6 +75,10 @@ def Search_Service_Location_With_Name(name, testcase_no)
   end  
  end	  
   
+   
+   #*  Purpose           :  Create service request for a specific vehicle and verify teh service request created
+   #*  Return Value    : None   
+   #*  Parameters      :  vehicle#, compaint, note, conteact number, driver name, driver phone number, breakdown location, breakdown city, breakdown state and testcase # in which the function is called
    def Create_Service_Request(vehicle_no, complaint, note, contact_no, driver_name, driver_no, breakdown_location, breakdown_city, breakdown_state, testcase_no)
     service_location = @driver.find_element(:xpath, ServiceRequestFirstServiceLocationName_ID).text
     @driver.find_element(:link, ServiceRequest_Link).click

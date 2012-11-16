@@ -4,6 +4,9 @@ require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/PageC
 require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/LibraryFiles/Reusable_methods')
 require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/LibraryFiles/Constants')
 
+#*  Purpose           :  Login to the application
+#*  Return Value    : None   
+#*  Parameters      :  Username, Password and testcase # in which teh function is called
 def Login(username, password, testcase_no) 
     @driver.find_element(:id, LoginMenu_Link).click
     @driver.find_element(:id, UserName_EB).clear

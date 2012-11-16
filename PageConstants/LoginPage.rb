@@ -1,5 +1,3 @@
-
-
 # LOGIN PAGE 
 LoginMenu_Link="topmenu_login"
 UserName_EB="identity"

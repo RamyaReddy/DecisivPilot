@@ -3,6 +3,10 @@ require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/Libra
 require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/LibraryFiles/Constants')
 
 
+
+#*  Purpose           :  Search for vehcile with unit# and verify the search results
+#*  Return Value    : None   
+#*  Parameters      :  unit# of the vehicle , testcase # in which the function is called
 def VehicleSearchWithUnit_No(unit_no, testcase_no)
     @driver.find_element(:id, SearchMenu_Link).click
     Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, VehicleSearchType_DD)).select_by(:text, "Unit")
@@ -37,6 +41,10 @@ def VehicleSearchWithUnit_No(unit_no, testcase_no)
   end  
  end   
     
+ 
+#*  Purpose           :  Search for vehcile with serial# and verify the search results
+#*  Return Value    : None   
+#*  Parameters      :  serial# of the vehicle , testcase # in which the function is called
  def VehicleSearchWithSerial_No(serial_no, testcase_no)
     @driver.find_element(:id, SearchMenu_Link).click
     Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, VehicleSearchType_DD)).select_by(:text, "Serial")

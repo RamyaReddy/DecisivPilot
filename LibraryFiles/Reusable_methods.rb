@@ -11,7 +11,7 @@ def Folder_Exists(path)
 end
 
 
-#* Purpose      : to capture screenshot and save in the Error Screenshots folder 
+#* Purpose      : To capture  the screenshot and save in the Error Screenshots folder 
 #* Returns      : None
 #* Parameters  : path and testcase no
 def Capture_Screenshot(path, testcase_no)
@@ -21,12 +21,20 @@ def Capture_Screenshot(path, testcase_no)
     @driver.save_screenshot(filename)
  end
 
+
+#* Purpose      : To get the current date and time
+#* Returns      : None
+#* Parameters  : none
 def Current_Date_Time()
     $time_date = Time.now
     $current_time = $time_date.strftime("%I:%M:%S")
     $current_date = $time_date.strftime("%m/%d/%Y")
 end
 
+
+#* Purpose      : To create log in the html file
+#* Returns      : None
+#* Parameters  : checkpoint, result(takes only 2 values PASS/FAIL), screenshot location and testcase no
 def Results(testcase_no, checkpoint, result, screenshot)
         Current_Date_Time()
 	$fileHtml.puts "</td><tr><td width=110><font size=2 face=verdana>"
@@ -48,6 +56,10 @@ def Results(testcase_no, checkpoint, result, screenshot)
        $fileHtml.puts "</td>"
 end
 
+
+#* Purpose      : To create the start exceution summary report in the html file
+#* Returns      : None
+#* Parameters  : logfile location
 def Summary(logfile)
       $time = Time.new
       $fileHtml = File.new("#{logfile}", "w+")
@@ -60,6 +72,10 @@ def Summary(logfile)
       $fileHtml.puts "<tr><td bgcolor=#153E7E width=110><b><font color=white><center>Test Case #</td><td bgcolor=#153E7E width=400><b><font color=white><center>Test Scenario</td><td bgcolor=#153E7E width=100><b><font color=white><center>Result</td><td bgcolor=#153E7E width=110><b><font color=white><center>Execution Time</td><tr>"
 end	
 
+
+#* Purpose      : To save the  end execution sumary report 
+#* Returns      : None
+#* Parameters  : logfile location
 def End_Summary(logfile)
     $time = Time.new
     $fileHtml.puts "<body><br><center><font size=4 face=candara><b>Script execution ended at #{$time.strftime("%b-%d %H:%M:%S")}<br><br><br><center><table border=1 width=610><tr>"
@@ -67,9 +83,9 @@ def End_Summary(logfile)
 end    
 
 
-#wait = Selenium::WebDriver::Wait.new(:timeout => 3)
-#wait.until { driver.find_element(:id => "cheese").displayed? }
-
+#* Purpose      : To wait for a specific elemen till the timeout expires
+#* Returns      : returns True when element is located within timeout period else returns false
+#* Parameters  : locator type(say css, xpath, id, name etc) and locator value
 def Wait_For_Element(locator_type, locator_value)
    for iSecond in 0..$config['Longwait']
      sleep 1

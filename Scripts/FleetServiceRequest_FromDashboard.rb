@@ -1,3 +1,22 @@
+# *************************************************************************************************************************************************************************
+# Script Name: FleetServiceRequest_FromDashboard.rb
+# **************************************************************************************************************************************************************************
+# Product: Mvasist
+# Operating System : Windows 7 
+# Selenium webdriver 2.25 and   Ruby  - 1.9.2
+# Browser : Firefox 15.0
+# **************************************************************************************************************************************************************************
+# Description:   
+# Create Fleet service request from dashboard page
+# **************************************************************************************************************************************************************************
+# Recorded/Authored By : ZenQA            Date: 16-Nov-2012
+# Updated                    : 16-Nov-2012
+#*************************************************PRE CONDITONS ********************************************************************************************************
+# URL : Mention the test environment in $env variable at the begining of the script
+#************************************************ POST CONDITIONS******************************************************************************************************
+# log file              : FleetRequest_FromDashboardPage.html
+#***************************************************************************************************************************************************************************
+
 require "selenium-webdriver"
 require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/LibraryFiles/Reusable_methods')
 require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/PageParts/LoginPage')
@@ -13,13 +32,13 @@ class Test01_FleetRequest_FromDashboardPage < Test::Unit::TestCase
     if $driver
       @driver = $driver
     else
-      $test_browser = $config['FFBrowser']
+      $test_browser = $config['FF_Browser']
       $env = $config['url']
       $uname=$config['username1']
       $pwd=$config['password1']
      @driver = Selenium::WebDriver.for :"#{$config['FF_Browser']}"
      @driver.manage().window.maximize()
-     @driver.manage.timeouts.implicit_wait = 60
+     @driver.manage.timeouts.implicit_wait = 100
      @verification_errors = []
   end
   
@@ -41,7 +60,15 @@ class Test01_FleetRequest_FromDashboardPage < Test::Unit::TestCase
     @driver.quit
     assert_equal [], @verification_errors
   end
-
+ 
+  
+  ## Operation sperformed in FleetServiceRequest_FromDashboard script   
+    #* 1.  User Login to application with valid credentials
+    #* 2. User verifies that vehicles are displayed under requested service table and if not logs a message and stops script execution
+           #* 2.1. Click on request service button.
+    #*3. Searches for a service location and verifies that the search results were displayed correctly
+    #*4.  Creates service request for the searched service location and verifies the created  fleet service request from home page   
+  
   def test_FleetRequest_FromDashboardPage
 	 # Navigate to the volvo demo site
            @driver.get $env

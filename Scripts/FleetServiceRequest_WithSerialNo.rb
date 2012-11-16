@@ -1,3 +1,22 @@
+# *************************************************************************************************************************************************************************
+# Script Name: FleetServiceRequest_WithSerialNo.rb
+# **************************************************************************************************************************************************************************
+# Product: Mvasist
+# Operating System : Windows 7 
+# Selenium webdriver 2.25 and   Ruby  - 1.9.2
+# Browser : Firefox 15.0
+# **************************************************************************************************************************************************************************
+# Description:   
+# Create fleet service request by show vehicle page by searching with serial# of vehicle
+# ***************************************************************************************************************************************************************************
+# Recorded/Authored By : ZenQA            Date: 16-Nov-2012
+# Updated                    : 16-Nov-2012
+#*************************************************PRE CONDITONS ********************************************************************************************************
+# URL : Mention the test environment in $env variable at the begining of the script
+#************************************************ POST CONDITIONS******************************************************************************************************
+# log file              : FleetRequest_WithSerialNo.html
+#***************************************************************************************************************************************************************************
+
 require "selenium-webdriver"
 require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/LibraryFiles/Reusable_methods')
 require File.join(File.dirname(File.expand_path(File.dirname(__FILE__)))+'/PageParts/LoginPage')
@@ -14,7 +33,7 @@ class Test03_FleetRequest_WithSerialNo < Test::Unit::TestCase
     if $driver
       @driver = $driver
     else
-      $test_browser = $config['FFBrowser']
+      $test_browser = $config['FF_Browser']
       $env = $config['url']
       $uname=$config['username1']
       $pwd=$config['password1']
@@ -43,6 +62,14 @@ class Test03_FleetRequest_WithSerialNo < Test::Unit::TestCase
     assert_equal [], @verification_errors
   end
 
+  
+## Operation sperformed in FleetServiceRequest_FromDashboard script   
+  #* 1.  User Login to application with valid credentials
+  #* 2.  User searches for a vehicle with serial# and verifies the search results
+  #* 3.  User verifies that vehicles exists with searched serial#, navigates to show vehicle page and if no results were found, logs a message and stops script execution
+  #* 4.  Searches for a service location and verifies that the search results were displayed correctly
+  #* 5.  Creates service request for the searched service location and verifies the created  fleet service request from home page   
+    
   def test_FleetRequest_WithSerialNo
     # Navigate to the volvo demo site
     @driver.get $env
@@ -63,7 +90,7 @@ class Test03_FleetRequest_WithSerialNo < Test::Unit::TestCase
     #4. Perform service location search with location field and verify the search results
     Search_Service_Location_With_Location("Dallas,TX", "4")
     
-    #45 Create service request for the searched vehicle and service location and submit the request.
+    #5. Create service request for the searched vehicle and service location and submit the request.
     Create_Service_Request("123","Engine failure", "Please respond immediately", "9876543210", "testdriver", "9876543210", "street1", "Dallas", "Virginia", "5")
     else 
 	Results("3.0", "Vehicles doesn't exists with the searched serial# and hence cannot view the show vehicle page", "FAIL", $error_screenshots) 
